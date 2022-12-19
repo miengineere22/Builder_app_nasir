@@ -1,0 +1,76 @@
+{
+  "project_info": {
+    "project_number": "770415048808",
+    "project_id": "build-app-b327a",
+    "storage_bucket": "build-app-b327a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:770415048808:android:6308802c549fb316d2a3dd",
+        "android_client_info": {
+          "package_name": "com.contractor.BuildApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "770415048808-0i2u3lt7s0st1vm1rvu3e126a6t4iqbk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.contractor.BuildApp",
+            "certificate_hash": "1999dc76a8a24c04789ff60ca5e6a8d918dacd6d"
+          }
+        },
+        {
+          "client_id": "770415048808-gbjepve12hkf19qvdktds7qqpfk8tfpd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtjV7K1W6h8HLWctNp0HS39NVs8CjUm1E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "770415048808-gbjepve12hkf19qvdktds7qqpfk8tfpd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:770415048808:android:208ef49493592031d2a3dd",
+        "android_client_info": {
+          "package_name": "com.contractor.buildapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "770415048808-gbjepve12hkf19qvdktds7qqpfk8tfpd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtjV7K1W6h8HLWctNp0HS39NVs8CjUm1E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "770415048808-gbjepve12hkf19qvdktds7qqpfk8tfpd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
