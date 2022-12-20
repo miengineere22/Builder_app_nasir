@@ -264,7 +264,6 @@ class _CreateBidsState extends State<CreateBids> {
                                         emailController.text.toString(),
                                     '_pPrice':
                                         'Rs.' + priceController.text.toString(),
-
                                     '_pPhone': phoneController.text.toString(),
                                     '_pDescription':
                                         postController.text.toString(),

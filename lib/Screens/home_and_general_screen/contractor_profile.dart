@@ -11,7 +11,6 @@ class ProfileAccount extends StatefulWidget {
 
 class _ProfileAccountState extends State<ProfileAccount> {
   final user = FirebaseAuth.instance.currentUser!;
-  // This widget is the root of your application.
 
   Map map = {};
 
@@ -23,12 +22,12 @@ class _ProfileAccountState extends State<ProfileAccount> {
         .child(user.uid.toString())
         .get()
         .then((value) {
-      log(value.value.toString());
+      // log(value.value.toString());
       setState(() {
         map = value.value as Map;
       });
 
-      log(map["_uName"]);
+      // log(map["_uName"]);
     });
 
     super.didChangeDependencies();
@@ -75,7 +74,10 @@ class _ProfileAccountState extends State<ProfileAccount> {
                       child: CircleAvatar(
                         radius: 50.0,
                         backgroundImage: NetworkImage(
-                            'https://avatars0.githubusercontent.com/u/28812093?s=460&u=06471c90e03cfd8ce2855d217d157c93060da490&v=4'),
+                          map["_uImage"] ?? "",
+
+                          // 'https://avatars0.githubusercontent.com/u/28812093?s=460&u=06471c90e03cfd8ce2855d217d157c93060da490&v=4'
+                        ),
                       ),
                     ),
                     CircleAvatar(

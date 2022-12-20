@@ -3,6 +3,7 @@ import 'package:buildapp/Screens/bids/my_bids.dart';
 import 'package:buildapp/Screens/chats_screens/chats.dart';
 import 'package:buildapp/Screens/home_and_general_screen/account.dart';
 import 'package:buildapp/Screens/home_and_general_screen/dishboard.dart';
+import 'package:buildapp/Screens/home_and_general_screen/dishboard1.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

@@ -4,15 +4,18 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ActiveBids extends StatefulWidget {
-  const ActiveBids({Key? key}) : super(key: key);
-  _ActiveBidsState createState() => _ActiveBidsState();
+class Dashboard extends StatefulWidget {
+  const Dashboard({Key? key}) : super(key: key);
+  _DashboardState createState() => _DashboardState();
 }
 
-class _ActiveBidsState extends State<ActiveBids> {
+class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
         child: Card(
@@ -21,12 +24,7 @@ class _ActiveBidsState extends State<ActiveBids> {
           ),
           borderOnForeground: true,
           child: StreamBuilder(
-            stream: FirebaseFirestore.instance
-                .collection("Bits")
-                .where("_uId",
-                    isEqualTo:
-                        FirebaseAuth.instance.currentUser!.uid.toString())
-                .snapshots(),
+            stream: FirebaseFirestore.instance.collection("Bits").snapshots(),
             builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
               if (!snapshot.hasData) {
                 return Center(
@@ -102,6 +100,10 @@ class _ActiveBidsState extends State<ActiveBids> {
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold),
                                 ),
+                                // snapshot.data!.docs[index]["_pLocation"],
+                                // snapshot.data!.docs[index]["_pUserName"],
+                                // snapshot.data!.docs[index]["_pEmail"],
+                                // snapshot.data!.docs[index]["_pPhone"],
                                 SizedBox(
                                   height: 15,
                                 ),
@@ -119,37 +121,5 @@ class _ActiveBidsState extends State<ActiveBids> {
         ),
       ),
     );
-    //  Scaffold(
-    //   body: StreamBuilder(
-    //     stream: FirebaseFirestore.instance
-    //         .collection("Bits")
-    //         .where("_uId",
-    //             isEqualTo: FirebaseAuth.instance.currentUser!.uid.toString())
-    //         .snapshots(),
-    //     builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-    //       if (!snapshot.hasData) {
-    //         return Center(
-    //           child: Text(""),
-    //         );
-    //       } else if (snapshot.connectionState == ConnectionState.waiting) {
-    //         return Center(
-    //           child: CircularProgressIndicator(),
-    //         );
-    //       } else {
-    //         return ListView.builder(
-    //           itemCount: snapshot.data!.docs.length,
-    //           itemBuilder: (context, index) {
-    //             return Card(
-    //               child: ListTile(
-    //                 leading: Text(snapshot.data!.docs[index]["_pPrice"]),
-    //                 title: Text(snapshot.data!.docs[index]["_uEmail"]),
-    //               ),
-    //             );
-    //           },
-    //         );
-    //       }
-    //     },
-    //   ),
-    // );
   }
 }
