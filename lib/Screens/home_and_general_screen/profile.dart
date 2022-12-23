@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:buildapp/Screens/home_and_general_screen/Bottom_navigation_bar.dart';
 import 'package:buildapp/Utils/utils.dart';
 import 'package:buildapp/widgets/round_button.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -11,7 +12,6 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ProfileScreen extends StatefulWidget {
-  // ProfileScreen({Key key}) : super(key: key);
   @override
   _SignInState createState() => _SignInState();
 }
@@ -27,13 +27,12 @@ class _SignInState extends State<ProfileScreen> {
   final ucityController = TextEditingController();
   final uhomeController = TextEditingController();
   final uworktitleController = TextEditingController();
-  final uexperienceController = TextEditingController();
-  final uteammemberController = TextEditingController();
+  final uphoneNumber = TextEditingController();
   final _auth = FirebaseAuth.instance;
-  // String cust_name;
-  // String email;
-  // String password;
+  // final FirebaseAuth ref = FirebaseAuth.instance;
+  // final database = FirebaseFirestore.instance.collection("Users Detiles");
   //
+
   final _formkey = GlobalKey<FormState>();
   File? _image;
   final picker = ImagePicker();
@@ -228,6 +227,26 @@ class _SignInState extends State<ProfileScreen> {
                     Padding(
                       padding: const EdgeInsets.only(left: 20, right: 20),
                       child: TextFormField(
+                        controller: uphoneNumber,
+                        // keyboardType: TextInputType.text,
+                        validator: MultiValidator([
+                          RequiredValidator(errorText: "Required*"),
+                        ]),
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          labelText: 'Phone Number',
+                          prefixIcon: Icon(Icons.phone),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      child: TextFormField(
                         controller: ucountryController,
                         // keyboardType: TextInputType.text,
                         validator: RequiredValidator(errorText: 'Required*'),
@@ -312,42 +331,7 @@ class _SignInState extends State<ProfileScreen> {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20, right: 20),
-                      child: TextFormField(
-                        controller: uexperienceController,
-                        // keyboardType: TextInputType.text,
-                        validator: RequiredValidator(errorText: 'Required*'),
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          labelText: 'Experience',
-                          prefixIcon: Icon(Icons.work),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20, right: 20),
-                      child: TextFormField(
-                        controller: uteammemberController,
-                        // keyboardType: TextInputType.text,/
-                        validator: RequiredValidator(errorText: 'Required*'),
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          labelText: 'Team Members',
-                          prefixIcon: Icon(Icons.group),
-                        ),
-                      ),
-                    ),
+
                     SizedBox(
                       height: 15,
                     ),
@@ -365,17 +349,20 @@ class _SignInState extends State<ProfileScreen> {
                                     loading = true;
                                   });
                                   try {
-                                    int date =
+                                    var date =
                                         DateTime.now().millisecondsSinceEpoch;
-                                    // firebase_storage.Reference ref =
-                                    //     firebase_storage.FirebaseStorage.instance
-                                    //         .ref('/Post$date');
+                                    // Reference ref = storage.ref('/Post$date');
+
+                                    // // firebase_storage.Reference ref =
+                                    ////     firebase_storage.FirebaseStorage.instance
+                                    // //         .ref('/Post$date');
                                     // UploadTask uploadTask =
                                     //     ref.putFile(_image!.absolute);
                                     // await Future.value(uploadTask);
                                     // var newUrl = await ref.getDownloadURL();
 
-                                    // final User? user = _auth.currentUser;
+                                    final user =
+                                        FirebaseAuth.instance.currentUser;
 
                                     userRef
                                         .child(
@@ -395,12 +382,11 @@ class _SignInState extends State<ProfileScreen> {
                                       '_uHome': uhomeController.text.toString(),
                                       '_uWorkTitle':
                                           uworktitleController.text.toString(),
-                                      '_uTeam':
-                                          uteammemberController.text.toString(),
+                                      '_uPhone': uphoneNumber.text.toString(),
                                       "userId":
-                                          _auth.currentUser!.uid.toString()
-                                      // '_uEmail': user!.uemail.toString(),
-                                      // '_uId': user.uid.toString(),
+                                          _auth.currentUser!.uid.toString(),
+                                      // '_uEmail': user!.uemailController.toString(),
+                                      // '_uId': user!.uid.toString(),
                                     }).then((value) {
                                       Utils().toastMessage(
                                           'Create profile successfully');
@@ -420,9 +406,8 @@ class _SignInState extends State<ProfileScreen> {
                                     });
                                     Utils().toastMessage(e.toString());
                                   }
-                                  // }
+                                  Get.to(BottomNavigationBarScreen());
                                 }
-                                Get.to(BottomNavigationBarScreen());
                               })),
                     ),
                   ],

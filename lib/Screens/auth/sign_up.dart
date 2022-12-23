@@ -138,7 +138,7 @@ class _SignInState extends State<SignUp> {
                           loading: loading,
                           onTap: () async {
                             setState(() {
-                              // loading = true;
+                              loading = true;
                             });
 
                             if (_formkey.currentState!.validate()) {
@@ -150,15 +150,15 @@ class _SignInState extends State<SignUp> {
                                   .then((value) {
                                 Utils().toastMessage('Successfully Registered');
                                 setState(() {
-                                  // loading = false;
+                                  loading = false;
                                 });
+                                Get.to(ProfileScreen());
                               }).onError((error, stackTrace) {
                                 Utils().toastMessage(error.toString());
                                 setState(() {
                                   loading = false;
                                 });
                               });
-                              Get.to(ProfileScreen());
                             }
                           },
                         ),

@@ -1,9 +1,8 @@
 import 'package:buildapp/Screens/bids/create_bids.dart';
+import 'package:buildapp/Screens/bids/favorites.dart';
 import 'package:buildapp/Screens/bids/my_bids.dart';
-import 'package:buildapp/Screens/chats_screens/chats.dart';
 import 'package:buildapp/Screens/home_and_general_screen/account.dart';
 import 'package:buildapp/Screens/home_and_general_screen/dishboard.dart';
-import 'package:buildapp/Screens/home_and_general_screen/dishboard1.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,7 +18,6 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
   final List<Widget> screens = [
     Dashboard(),
     MyBids(),
-    Chat(),
     Account(),
   ];
   final PageStorageBucket backet = PageStorageBucket();
@@ -58,7 +56,7 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(
-                            Icons.dashboard,
+                            Icons.home,
                             color: currentTab == 0 ? Colors.blue : Colors.white,
                           ),
                           Text(
@@ -82,7 +80,7 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(
-                            Icons.local_offer,
+                            Icons.work,
                             color: currentTab == 1 ? Colors.blue : Colors.white,
                           ),
                           Text(
@@ -103,7 +101,7 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
                     MaterialButton(
                       onPressed: () {
                         setState(() {
-                          currentScreen = Chat();
+                          currentScreen = Favorites();
                           currentTab = 2;
                         });
                       },
@@ -111,11 +109,11 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(
-                            Icons.chat,
+                            Icons.favorite,
                             color: currentTab == 2 ? Colors.blue : Colors.white,
                           ),
                           Text(
-                            "Chats",
+                            "Favorites",
                             style: TextStyle(
                               color:
                                   currentTab == 2 ? Colors.blue : Colors.white,

@@ -1,15 +1,6 @@
 import 'dart:io';
-import 'package:buildapp/Screens/home_and_general_screen/Bids_full_detiles.dart';
-import 'package:buildapp/Screens/home_and_general_screen/Bottom_navigation_bar.dart';
-import 'package:buildapp/Screens/auth/sign_in.dart';
-import 'package:buildapp/Screens/auth/sign_up.dart';
-import 'package:buildapp/Screens/home_and_general_screen/profile.dart';
-// import 'package:buildapp/decisions_tree.dart';
-import 'package:buildapp/pages/LoginScreen.dart';
 import 'package:buildapp/splash.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -40,22 +31,13 @@ class MyApp extends StatelessWidget {
       ),
       home:
 
-          // ChatScreenPage(
-          // title: 'ChatScreen', name: 'Nasir', profession: 'Developer'),
-          // HomScreen(),
-          // SignUp(),
-          // SignIn(),
-          // ContractorList(),
           // MyBids(),
 
-          // Chat(),
           // CreateBids(),
 
           // ProfileScreen(),
           // SignUp(),
-          //  MyDrawar(title: ""),
           // BottomNavigationBarScreen(),
-          // DecisionsTree()
           // LoginScreen(),
           // ForgotPass(),
           // HomeScreen(),

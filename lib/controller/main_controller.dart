@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 
 class MainController extends GetxController {
   userLoading() {
-    // print('User Login ');
     showLoading(title: "please wait");
   }
 

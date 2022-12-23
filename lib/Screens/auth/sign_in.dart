@@ -46,14 +46,14 @@ class _SignInState extends State<SignIn> {
         loading = false;
       });
     });
-    controller.userLoading();
+    // controller.userLoading();
   }
 
   @override
   void dispose() {
-    // setState(() {
-    //   // loading = true;
-    // });
+    setState(() {
+      loading = true;
+    });
     super.dispose();
     emailController.dispose();
     pwdController.dispose();
@@ -155,7 +155,7 @@ class _SignInState extends State<SignIn> {
                         height: 40,
                         child: RoundButton(
                             title: 'Sign In',
-                            // loading: loading,
+                            loading: loading,
                             // onTap: signIn,
                             // setState(() {
                             //   // loading = true;
