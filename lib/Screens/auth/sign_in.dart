@@ -67,7 +67,7 @@ class _SignInState extends State<SignIn> {
         title: Text('Sign In'),
         centerTitle: true,
       ),
-      backgroundColor: Colors.white,
+      // backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Form(
           key: _formkey,
@@ -81,7 +81,7 @@ class _SignInState extends State<SignIn> {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50.0),
-                  color: Colors.white,
+                  color: Colors.white60,
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -156,10 +156,6 @@ class _SignInState extends State<SignIn> {
                         child: RoundButton(
                             title: 'Sign In',
                             loading: loading,
-                            // onTap: signIn,
-                            // setState(() {
-                            //   // loading = true;
-                            // });
                             onTap: () {
                               if (_formkey.currentState!.validate()) {
                                 signIn();
@@ -167,19 +163,19 @@ class _SignInState extends State<SignIn> {
                             }),
                       ),
                     ),
-                    InkWell(
-                      onTap: () {
-                        Get.to(LoginWithPhoneNumber());
-                      },
-                      child: Container(
-                        height: 40,
-                        width: 300,
-                        child: Center(child: Text('LogIn with phone')),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(40),
-                            border: Border.all(color: Colors.black)),
-                      ),
-                    ),
+                    // InkWell(
+                    //   onTap: () {
+                    //     Get.to(LoginWithPhoneNumber());
+                    //   },
+                    //   child: Container(
+                    //     height: 40,
+                    //     width: 300,
+                    //     child: Center(child: Text('LogIn with phone')),
+                    //     decoration: BoxDecoration(
+                    //         borderRadius: BorderRadius.circular(40),
+                    //         border: Border.all(color: Colors.black)),
+                    //   ),
+                    // ),
                     Padding(
                         padding: const EdgeInsets.all(35.0),
                         child: Row(
@@ -188,7 +184,7 @@ class _SignInState extends State<SignIn> {
                             TextButton(
                                 onPressed: () {
                                   Get.to(SignUp());
-                                  controller.userLoading();
+                                  // controller.userLoading();
                                 },
                                 child: Text('Sign Up'))
                           ],

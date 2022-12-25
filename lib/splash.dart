@@ -20,28 +20,6 @@ class _LaunchScreenState extends State<LaunchScreen> {
     launchScreen.islogin(context);
     super.initState();
   }
-  //method 1 splash screen
-  // void initState() {
-  //   super.initState();
-  //   _navigatetohome();
-  // }
-
-  // _navigatetohome() async {
-  //   await Future.delayed(
-  //     const Duration(milliseconds: 9000),
-  //     () {
-  //       Navigator.pushReplacement(
-  //           context, MaterialPageRoute(builder: (context) => SignIn()));
-  //     },
-  //   );
-  // }
-  // void initState() {
-  //   super.initState();
-  //   Timer(
-  //       Duration(seconds: 4),
-  //       () => Navigator.pushReplacement(
-  //           context, MaterialPageRoute(builder: (context) => SignIn())));
-  // }
 
   @override
   Widget build(BuildContext context) {
