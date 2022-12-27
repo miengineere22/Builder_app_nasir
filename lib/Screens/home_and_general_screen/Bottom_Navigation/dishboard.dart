@@ -1,6 +1,5 @@
 import 'package:buildapp/Screens/home_and_general_screen/Bottom_Navigation/detial_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -100,10 +99,6 @@ class _DashboardState extends State<Dashboard> {
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                // snapshot.data!.docs[index]["_pLocation"],
-                                // snapshot.data!.docs[index]["_pUserName"],
-                                // snapshot.data!.docs[index]["_pEmail"],
-                                // snapshot.data!.docs[index]["_pPhone"],
                                 SizedBox(
                                   height: 15,
                                 ),
