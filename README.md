@@ -1,4 +1,4 @@
-# click_counter
+# Contractor Builder app
 
 A new Flutter project created with https://flutlab.io
 
