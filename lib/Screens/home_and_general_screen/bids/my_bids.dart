@@ -1,18 +1,23 @@
-import 'package:buildapp/Screens/home_and_general_screen/detial_screen.dart';
+import 'package:buildapp/Screens/home_and_general_screen/Bottom_Navigation/detial_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ActiveBids extends StatefulWidget {
-  const ActiveBids({Key? key}) : super(key: key);
-  _ActiveBidsState createState() => _ActiveBidsState();
+class MyBids extends StatefulWidget {
+  const MyBids({Key? key}) : super(key: key);
+  _MyBidsState createState() => _MyBidsState();
 }
 
-class _ActiveBidsState extends State<ActiveBids> {
+class _MyBidsState extends State<MyBids> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('My Bids'),
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
         child: Card(
@@ -119,37 +124,5 @@ class _ActiveBidsState extends State<ActiveBids> {
         ),
       ),
     );
-    //  Scaffold(
-    //   body: StreamBuilder(
-    //     stream: FirebaseFirestore.instance
-    //         .collection("Bits")
-    //         .where("_uId",
-    //             isEqualTo: FirebaseAuth.instance.currentUser!.uid.toString())
-    //         .snapshots(),
-    //     builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-    //       if (!snapshot.hasData) {
-    //         return Center(
-    //           child: Text(""),
-    //         );
-    //       } else if (snapshot.connectionState == ConnectionState.waiting) {
-    //         return Center(
-    //           child: CircularProgressIndicator(),
-    //         );
-    //       } else {
-    //         return ListView.builder(
-    //           itemCount: snapshot.data!.docs.length,
-    //           itemBuilder: (context, index) {
-    //             return Card(
-    //               child: ListTile(
-    //                 leading: Text(snapshot.data!.docs[index]["_pPrice"]),
-    //                 title: Text(snapshot.data!.docs[index]["_uEmail"]),
-    //               ),
-    //             );
-    //           },
-    //         );
-    //       }
-    //     },
-    //   ),
-    // );
   }
 }

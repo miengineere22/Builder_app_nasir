@@ -1,8 +1,8 @@
-import 'package:buildapp/Screens/bids/create_bids.dart';
-import 'package:buildapp/Screens/bids/favorites.dart';
-import 'package:buildapp/Screens/bids/my_bids.dart';
-import 'package:buildapp/Screens/home_and_general_screen/account.dart';
-import 'package:buildapp/Screens/home_and_general_screen/dishboard.dart';
+import 'package:buildapp/Screens/home_and_general_screen/Account/account.dart';
+import 'package:buildapp/Screens/home_and_general_screen/Bottom_Navigation/dishboard.dart';
+import 'package:buildapp/Screens/home_and_general_screen/bids/create_bids.dart';
+import 'package:buildapp/Screens/home_and_general_screen/bids/favorites.dart';
+import 'package:buildapp/Screens/home_and_general_screen/bids/my_bids.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -84,7 +84,7 @@ class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
                             color: currentTab == 1 ? Colors.blue : Colors.white,
                           ),
                           Text(
-                            "Bids",
+                            "My Bids",
                             style: TextStyle(
                               color:
                                   currentTab == 1 ? Colors.blue : Colors.white,

@@ -9,7 +9,11 @@ class _FavoritesState extends State<Favorites> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(automaticallyImplyLeading: false),
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text('Favorites'),
+        automaticallyImplyLeading: false,
+      ),
       body: Center(
         child: Text(
           'Favorites',

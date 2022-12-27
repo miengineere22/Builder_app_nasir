@@ -1,9 +1,11 @@
 import 'package:buildapp/Screens/auth/sign_in.dart';
-import 'package:buildapp/Screens/home_and_general_screen/contractor_profile.dart';
+import 'package:buildapp/Screens/home_and_general_screen/Account/about_developer.dart';
+import 'package:buildapp/Screens/home_and_general_screen/Account/contractor_profile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:share/share.dart';
 
 class Account extends StatefulWidget {
   @override
@@ -37,7 +39,7 @@ class _AccountState extends State<Account> {
                     leading: Icon(Icons.verified_user_outlined),
                     title: Text(' About Developer '),
                     onTap: () {
-                      // Get.to(Favorites());
+                      Get.to(AboutPage());
                     },
                   ),
                   ListTile(
@@ -51,7 +53,8 @@ class _AccountState extends State<Account> {
                     leading: Icon(Icons.share),
                     title: Text(' Share With friends '),
                     onTap: () {
-                      // Get.to(Favorites());
+                      // Get.to(shareApp());
+                      Share.share('com.contractor.BuildApp');
                     },
                   ),
                   ListTile(

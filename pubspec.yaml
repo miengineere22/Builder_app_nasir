@@ -45,6 +45,7 @@ dependencies:
   flutter_phone_direct_caller: ^2.1.1
   url_launcher: ^6.1.7
   provider: ^6.0.5
+  share: ^0.6.3+2
   
 
 dev_dependencies:

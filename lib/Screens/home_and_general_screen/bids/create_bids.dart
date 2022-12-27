@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:buildapp/Screens/home_and_general_screen/Bottom_navigation_bar.dart';
+import 'package:buildapp/Screens/home_and_general_screen/Bottom_Navigation/Bottom_navigation_bar.dart';
 import 'package:buildapp/controller/main_controller.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -7,13 +7,10 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:buildapp/Utils/utils.dart';
 import 'package:buildapp/widgets/round_button.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:intl/intl.dart';
 
 class CreateBids extends StatefulWidget {
   const CreateBids({Key? key}) : super(key: key);

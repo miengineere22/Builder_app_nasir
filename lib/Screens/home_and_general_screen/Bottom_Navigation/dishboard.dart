@@ -1,4 +1,4 @@
-import 'package:buildapp/Screens/home_and_general_screen/detial_screen.dart';
+import 'package:buildapp/Screens/home_and_general_screen/Bottom_Navigation/detial_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
