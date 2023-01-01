@@ -1,6 +1,6 @@
 import 'package:buildapp/Screens/auth/login_with_phone_number.dart';
-import 'package:buildapp/Screens/home_and_general_screen/Bottom_navigation_bar.dart';
 import 'package:buildapp/Screens/auth/sign_up.dart';
+import 'package:buildapp/Screens/home_and_general_screen/Bottom_Navigation/Bottom_navigation_bar.dart';
 import 'package:buildapp/Utils/utils.dart';
 import 'package:buildapp/controller/main_controller.dart';
 import 'package:buildapp/widgets/round_button.dart';

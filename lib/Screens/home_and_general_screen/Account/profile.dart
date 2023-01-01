@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:buildapp/Screens/home_and_general_screen/Bottom_navigation_bar.dart';
+import 'package:buildapp/Screens/home_and_general_screen/Bottom_Navigation/Bottom_navigation_bar.dart';
 import 'package:buildapp/Utils/utils.dart';
 import 'package:buildapp/widgets/round_button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
