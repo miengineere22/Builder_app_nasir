@@ -87,10 +87,10 @@ class _DashboardState extends State<Dashboard> {
                                           fontWeight: FontWeight.bold),
                                     ),
                                     const Spacer(),
-                                    // IconButton(
-                                    //   icon: Icon(Icons.favorite_outline),
-                                    //   onPressed: () {},
-                                    // )
+                                    IconButton(
+                                      icon: Icon(Icons.favorite_outline),
+                                      onPressed: () {},
+                                    )
                                   ],
                                 ),
                                 Text(
