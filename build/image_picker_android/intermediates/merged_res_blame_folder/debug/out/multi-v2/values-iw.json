@@ -1,0 +1,34 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Users\\khan7\\Desktop\\Builder_app_nasir\\build\\image_picker_android\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-iw\\values-iw.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\khan7\\.gradle\\caches\\transforms-3\\e3742e34ed00951fc1e17a53571d0c48\\transformed\\core-1.8.0\\res\\values-iw\\values-iw.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\Users\\khan7\\Desktop\\Builder_app_nasir\\build\\image_picker_android\\intermediates\\merged_res\\debug\\values-iw\\values-iw.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\khan7\\.gradle\\caches\\transforms-3\\e3742e34ed00951fc1e17a53571d0c48\\transformed\\core-1.8.0\\res\\values-iw\\values-iw.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    }
+                }
+            ]
+        }
+    ]
+}

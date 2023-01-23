@@ -40,46 +40,48 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       appBar: AppBar(
         title: Text('Forgot Password'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          children: [
-            Image.asset(
-              "Assets/Images/forgotpassword.png",
-              width: 300,
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              'Forgot Your Password?',
-              style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-            ),
-            Text(
-              'Please enter your registered email to rest your password',
-              style: TextStyle(fontSize: 20.0),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  TextFormField(
-                    controller: emailController,
-                    decoration: InputDecoration(hintText: 'Email'),
-                  ),
-                  SizedBox(
-                    height: 40,
-                  ),
-                  RoundButton(
-                    title: 'Reset password',
-                    onTap: passwordReset,
-                  )
-                ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            children: [
+              Image.asset(
+                "Assets/Images/forgotpassword.png",
+                width: 300,
               ),
-            ),
-          ],
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                'Forgot Your Password?',
+                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+              ),
+              Text(
+                'Please enter your registered email to rest your password',
+                style: TextStyle(fontSize: 20.0),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    TextFormField(
+                      controller: emailController,
+                      decoration: InputDecoration(hintText: 'Email'),
+                    ),
+                    SizedBox(
+                      height: 40,
+                    ),
+                    RoundButton(
+                      title: 'Reset password',
+                      onTap: passwordReset,
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

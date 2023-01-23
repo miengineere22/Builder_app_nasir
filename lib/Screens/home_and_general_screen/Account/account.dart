@@ -5,7 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:share/share.dart';
+// // ignore: import_of_legacy_library_into_null_safe
+// import 'package:share/share.dart';
 
 class Account extends StatefulWidget {
   @override
@@ -54,7 +55,7 @@ class _AccountState extends State<Account> {
                     title: Text(' Share With friends '),
                     onTap: () {
                       // Get.to(shareApp());
-                      Share.share('com.contractor.BuildApp');
+                      // Share.share('com.example.buildapp');
                     },
                   ),
                   ListTile(
@@ -78,8 +79,6 @@ class _AccountState extends State<Account> {
                         await FirebaseAuth.instance.signOut().then((value) {
                           Get.offAll(() => SignIn());
                         });
-                        // _auth.signOut().then((value) {}
-                        // Get.to(SignIn());
                       }),
                 ],
               ),

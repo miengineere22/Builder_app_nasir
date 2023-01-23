@@ -9,7 +9,7 @@ class DetailScreen extends StatefulWidget {
   final String? image;
   final String? description;
   final String? location;
-  final String? username;
+  final String? name;
 
   DetailScreen({
     Key? key,
@@ -20,7 +20,7 @@ class DetailScreen extends StatefulWidget {
     required this.description,
     required this.image,
     required this.location,
-    required this.username,
+    required this.name,
   }) : super(key: key);
 
   @override
@@ -28,6 +28,31 @@ class DetailScreen extends StatefulWidget {
 }
 
 class _DetailScreenState extends State<DetailScreen> {
+  // final database = FirebaseFirestore.instance.collection("Favorite");
+
+  // final auth = FirebaseAuth.instance.currentUser;
+  // favoriteData(DocumentSnapshot? snpashot) async {
+  //   try {
+  //     print(snpashot!.id);
+
+  //     Map map = snpashot.data() as Map<String, dynamic>;
+
+  //     print(map);
+
+  //     await database.add({
+  //       "name": map["_pUserName"],
+  //       "Date":
+  //           "${DateTime.now().day}-${DateTime.now().month}-${DateTime.now().year}",
+  //       "email": map["_pUserEmail"],
+  //       "imageUrl": map["_pImage"],
+  //       "price": map["_pPrice"],
+  //       "title": map["_pTitle"],
+  //       "userId": auth!.uid,
+  //     });
+  //   } catch (e) {
+  //     log("error in upload data");
+  //   }
+  // }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,13 +72,16 @@ class _DetailScreenState extends State<DetailScreen> {
                     Container(
                       child: Column(
                         children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
-                            child: FadeInImage.assetNetwork(
-                              placeholder: 'Assets/Images/building.jpg',
-                              image: widget.image.toString(),
-                              width: MediaQuery.of(context).size.width,
-                              height: 300,
+                          Container(
+                            height: 300,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: FadeInImage.assetNetwork(
+                                placeholder: 'Assets/Images/building.jpg',
+                                image: widget.image.toString(),
+                                width: MediaQuery.of(context).size.width,
+                                height: 300,
+                              ),
                             ),
                           ),
                           Row(
@@ -64,10 +92,13 @@ class _DetailScreenState extends State<DetailScreen> {
                                     fontSize: 20, fontWeight: FontWeight.bold),
                               ),
                               const Spacer(),
-                              IconButton(
-                                icon: Icon(Icons.favorite_outline),
-                                onPressed: () {},
-                              )
+                              //  IconButton(
+                              //           icon: Icon(Icons.favorite_outline),
+                              //           onPressed: () async {
+                              //             favoriteData(
+                              //                 snapshot.data!.docs[index]);
+                              //           },
+                              //         )
                             ],
                           ),
                           SizedBox(
@@ -89,7 +120,6 @@ class _DetailScreenState extends State<DetailScreen> {
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   child: Column(
-                      // mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
@@ -120,7 +150,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                   width: 20,
                                 ),
                                 Text(
-                                  widget.username.toString(),
+                                  widget.name.toString(),
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                               ],
@@ -149,7 +179,9 @@ class _DetailScreenState extends State<DetailScreen> {
                                       //
                                       String usermail =
                                           "mailto:$currentUserEmail";
+                                      // ignore: deprecated_member_use
                                       if (await canLaunch(usermail)) {
+                                        // ignore: deprecated_member_use
                                         await launch(usermail);
                                       } else {
                                         throw "Error occured trying to mail that account.";
@@ -181,7 +213,9 @@ class _DetailScreenState extends State<DetailScreen> {
 
                                       String telephoneUrl =
                                           "https://wa.me/$telephoneNumber";
+                                      // ignore: deprecated_member_use
                                       if (await canLaunch(telephoneUrl)) {
+                                        // ignore: deprecated_member_use
                                         await launch(telephoneUrl);
                                       } else {
                                         throw "Error occured trying to call that number.";
@@ -221,21 +255,4 @@ class _DetailScreenState extends State<DetailScreen> {
       ),
     );
   }
-
-//      Scaffold(
-//       appBar: AppBar(title: Text("Details")),
-//       body: Center(
-//           child: Column(
-//         children: [
-//           // Text(widget.email.toString()),
-//           // Text(widget.phone.toString()),
-//           Text(widget.title.toString()),
-//           // Text(widget.location.toString()),
-//           Text(widget.price.toString()),
-//           Text(widget.description.toString()),
-//           // Text(widget.username.toString()),
-//           // Image(widget.image.toString()),
-//         ],
-//       )),
-//     );
 }

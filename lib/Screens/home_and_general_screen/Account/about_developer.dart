@@ -49,7 +49,9 @@ class _AboutPageState extends State<AboutPage> {
                             var currentUserEmail = 'abdulnasiricp@gmail.com';
 
                             String usermail = "mailto:$currentUserEmail";
+                            // ignore: deprecated_member_use
                             if (await canLaunch(usermail)) {
+                              // ignore: deprecated_member_use
                               await launch(usermail);
                             } else {
                               throw "Error occured trying to mail that account.";
@@ -80,7 +82,9 @@ class _AboutPageState extends State<AboutPage> {
 
                             String telephoneUrl =
                                 "https://wa.me/$telephoneNumber";
+                            // ignore: deprecated_member_use
                             if (await canLaunch(telephoneUrl)) {
+                              // ignore: deprecated_member_use
                               await launch(telephoneUrl);
                             } else {
                               throw "Error occured trying to call that number.";

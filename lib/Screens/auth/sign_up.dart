@@ -1,5 +1,5 @@
 import 'package:buildapp/Screens/auth/sign_in.dart';
-import 'package:buildapp/Screens/home_and_general_screen/Account/profile.dart';
+import 'package:buildapp/Screens/home_and_general_screen/Bottom_Navigation/home.dart';
 import 'package:buildapp/Utils/utils.dart';
 import 'package:buildapp/controller/main_controller.dart';
 import 'package:buildapp/widgets/round_button.dart';
@@ -16,7 +16,6 @@ class SignUp extends StatefulWidget {
 class _SignInState extends State<SignUp> {
   MainController controller = Get.put(MainController());
 
-  @override
   bool _isHidden = true;
   bool loading = false;
   final pwdController = TextEditingController();
@@ -152,7 +151,8 @@ class _SignInState extends State<SignUp> {
                                 setState(() {
                                   loading = false;
                                 });
-                                Get.to(ProfileScreen());
+                                // Get.to(ProfileScreen());
+                                Get.to(HomeScreen());
                               }).onError((error, stackTrace) {
                                 Utils().toastMessage(error.toString());
                                 setState(() {

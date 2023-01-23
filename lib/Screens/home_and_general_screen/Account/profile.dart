@@ -4,7 +4,6 @@ import 'package:buildapp/Utils/utils.dart';
 import 'package:buildapp/widgets/round_button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
@@ -17,7 +16,6 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _SignInState extends State<ProfileScreen> {
-  @override
   // bool _isHidden = true;
   bool loading = false;
   final unameController = TextEditingController();
@@ -29,16 +27,18 @@ class _SignInState extends State<ProfileScreen> {
   final uworktitleController = TextEditingController();
   final uphoneNumber = TextEditingController();
   final _auth = FirebaseAuth.instance;
-  // final FirebaseAuth ref = FirebaseAuth.instance;
-  // final database = FirebaseFirestore.instance.collection("Users Detiles");
-  //
+  final FirebaseAuth ref = FirebaseAuth.instance;
+  final database = FirebaseFirestore.instance.collection("User Detial");
 
   final _formkey = GlobalKey<FormState>();
   File? _image;
   final picker = ImagePicker();
 
   FirebaseStorage storage = FirebaseStorage.instance;
-  final userRef = FirebaseDatabase.instance.reference().child('Users');
+  // final userRef = FirebaseDatabase.instance.reference().child('Users');
+// firebase_storage.FirebaseStorage storage =
+//       firebase_storage.FirebaseStorage.instance;
+
   Future getImageGallery() async {
     final pickedFile = await picker.pickImage(
       source: ImageSource.gallery,
@@ -228,7 +228,7 @@ class _SignInState extends State<ProfileScreen> {
                       padding: const EdgeInsets.only(left: 20, right: 20),
                       child: TextFormField(
                         controller: uphoneNumber,
-                        // keyboardType: TextInputType.text,
+                        keyboardType: TextInputType.phone,
                         validator: MultiValidator([
                           RequiredValidator(errorText: "Required*"),
                         ]),
@@ -351,26 +351,18 @@ class _SignInState extends State<ProfileScreen> {
                                   try {
                                     var date =
                                         DateTime.now().millisecondsSinceEpoch;
-                                    // Reference ref = storage.ref('/Post$date');
 
-                                    // // firebase_storage.Reference ref =
-                                    ////     firebase_storage.FirebaseStorage.instance
-                                    // //         .ref('/Post$date');
-                                    // UploadTask uploadTask =
-                                    //     ref.putFile(_image!.absolute);
-                                    // await Future.value(uploadTask);
-                                    // var newUrl = await ref.getDownloadURL();
+                                    Reference ref = storage.ref('/Post$date');
+                                    UploadTask uploadTask =
+                                        ref.putFile(_image!.absolute);
+                                    await Future.value(uploadTask);
+                                    var newUrl = await ref.getDownloadURL();
 
                                     final user =
                                         FirebaseAuth.instance.currentUser;
-
-                                    userRef
-                                        .child(
-                                            _auth.currentUser!.uid.toString())
-                                        .set({
-                                      '_uid': date.toString(),
-                                      // '_pImage': newUrl.toString(),
+                                    await database.doc(user!.uid).set({
                                       '_uTime': date.toString(),
+                                      '_uImage': newUrl.toString(),
                                       '_uName': unameController.text.toString(),
                                       '_uEmail':
                                           uemailController.text.toString(),
@@ -385,8 +377,7 @@ class _SignInState extends State<ProfileScreen> {
                                       '_uPhone': uphoneNumber.text.toString(),
                                       "userId":
                                           _auth.currentUser!.uid.toString(),
-                                      // '_uEmail': user!.uemailController.toString(),
-                                      // '_uId': user!.uid.toString(),
+                                      '_uId': user.uid.toString(),
                                     }).then((value) {
                                       Utils().toastMessage(
                                           'Create profile successfully');

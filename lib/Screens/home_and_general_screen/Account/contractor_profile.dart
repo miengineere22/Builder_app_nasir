@@ -1,5 +1,7 @@
+import 'dart:developer';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 class ProfileAccount extends StatefulWidget {
@@ -14,21 +16,46 @@ class _ProfileAccountState extends State<ProfileAccount> {
 
   @override
   void didChangeDependencies() async {
-    await FirebaseDatabase.instance
-        .reference()
-        .child("Users")
-        .child(user.uid.toString())
-        .get()
-        .then((value) {
-      // log(value.value.toString());
-      setState(() {
-        map = value.value as Map;
-      });
+    await getData();
 
-      // log(map["_uName"]);
-    });
+    // await FirebaseDatabase.instance
+    //     .reference()
+    //     .child("Users")
+    //     .child(user.uid.toString())
+    //     .get()
+    //     .then((value) {
+    //   // log(value.value.toString());
+    //   setState(() {
+    //     map = value.value as Map;
+    //   });
+
+    //   // log(map["_uName"]);
+    // });
 
     super.didChangeDependencies();
+  }
+
+  getData() async {
+    try {
+      log(FirebaseAuth.instance.currentUser!.uid.toString());
+
+      print(FirebaseAuth.instance.currentUser!.uid.toString());
+
+      await FirebaseFirestore.instance
+          .collection("User Detial")
+          .doc(user.uid)
+          .get()
+          .then((value) {
+        log("=--------------------->>>>>");
+
+        setState(() {
+          map = value.data() as Map<String, dynamic>;
+        });
+        log(value.data().toString());
+      });
+    } catch (e) {
+      log("error in getData");
+    }
   }
 
   @override
@@ -56,10 +83,9 @@ class _ProfileAccountState extends State<ProfileAccount> {
                       minRadius: 60.0,
                       child: CircleAvatar(
                         radius: 50.0,
-                        backgroundImage: NetworkImage(
-                            // map["_uImage"] ?? "",
+                        backgroundImage: NetworkImage(map["_uImage"] ?? ""),
 
-                            'https://avatars0.githubusercontent.com/u/28812093?s=460&u=06471c90e03cfd8ce2855d217d157c93060da490&v=4'),
+                        // 'https://avatars0.githubusercontent.com/u/28812093?s=460&u=06471c90e03cfd8ce2855d217d157c93060da490&v=4'),
                       ),
                     ),
                   ],

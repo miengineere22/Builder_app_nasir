@@ -14,12 +14,12 @@ class SplashServices {
 
     if (user == null) {
       Timer(Duration(seconds: 3), () {
-        Get.to(() => SignIn());
+        Get.offAll(() => SignIn());
       });
     } else {
       Timer(
           Duration(seconds: 1),
-          () => Navigator.of(context).push(MaterialPageRoute(
+          () => Navigator.of(context).pushReplacement(MaterialPageRoute(
               builder: (context) => BottomNavigationBarScreen())));
     }
   }

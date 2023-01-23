@@ -1,12 +1,12 @@
 import 'dart:io';
 import 'package:buildapp/Screens/home_and_general_screen/Bottom_Navigation/Bottom_navigation_bar.dart';
-import 'package:buildapp/controller/main_controller.dart';
+// import 'package:buildapp/controller/main_controller.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:buildapp/Utils/utils.dart';
 import 'package:buildapp/widgets/round_button.dart';
-import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
@@ -18,8 +18,6 @@ class CreateBids extends StatefulWidget {
 }
 
 class _CreateBidsState extends State<CreateBids> {
-  MainController controller = Get.put(MainController());
-
   final database = FirebaseFirestore.instance.collection("Bits");
 
   bool loading = false;
@@ -30,7 +28,6 @@ class _CreateBidsState extends State<CreateBids> {
   final priceController = TextEditingController();
   final phoneController = TextEditingController();
   final postController = TextEditingController();
-  final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseAuth ref = FirebaseAuth.instance;
 
   final _formkey = GlobalKey<FormState>();
@@ -39,8 +36,6 @@ class _CreateBidsState extends State<CreateBids> {
 
   firebase_storage.FirebaseStorage storage =
       firebase_storage.FirebaseStorage.instance;
-
-  final postRef = FirebaseDatabase.instance.reference().child('Posts');
 
   Future getImageGallery() async {
     final pickedFile = await picker.pickImage(
@@ -228,44 +223,43 @@ class _CreateBidsState extends State<CreateBids> {
                         SizedBox(height: 15),
                         RoundButton(
                             title: 'Post Bids',
-                            // loading: loading,
+                            loading: loading,
                             onTap: () async {
                               if (_formkey.currentState!.validate()) {
                                 setState(() {
-                                  //   loading = true;
+                                  loading = true;
                                 });
                                 try {
                                   var date =
                                       DateTime.now().millisecondsSinceEpoch;
 
-                                  // firebase_storage.Reference ref =
-                                  //     firebase_storage.FirebaseStorage.instance
-                                  //         .ref('/Post$date');
-                                  // UploadTask uploadTask =
-                                  //     ref.putFile(_image!.absolute);
-                                  // await Future.value(uploadTask);
-                                  // var newUrl = await ref.getDownloadURL();
+                                  firebase_storage.Reference ref =
+                                      firebase_storage.FirebaseStorage.instance
+                                          .ref('/Post$date');
+                                  UploadTask uploadTask =
+                                      ref.putFile(_image!.absolute);
+                                  await Future.value(uploadTask);
+                                  var newUrl = await ref.getDownloadURL();
 
                                   final user =
                                       FirebaseAuth.instance.currentUser;
                                   await database.add({
-                                    'pid': date.toString(),
-                                    // '_pImage': newUrl.toString(),
-                                    '_pTime': date.toString(),
-                                    '_pTitle': titleController.text.toString(),
-                                    '_pLocation':
+                                    'pImage': newUrl.toString(),
+                                    'pTime': date.toString(),
+                                    'pTitle': titleController.text.toString(),
+                                    'pLocation':
                                         locationController.text.toString(),
-                                    '_pUserName':
+                                    'pUserName':
                                         usernameController.text.toString(),
-                                    '_pUserEmail':
+                                    'pUserEmail':
                                         emailController.text.toString(),
-                                    '_pPrice':
+                                    'pPrice':
                                         'Rs.' + priceController.text.toString(),
-                                    '_pPhone': phoneController.text.toString(),
-                                    '_pDescription':
+                                    'pPhone': phoneController.text.toString(),
+                                    'pDescription':
                                         postController.text.toString(),
-                                    '_uEmail': user!.email.toString(),
-                                    '_uId': user.uid.toString(),
+                                    'uEmail': user!.email.toString(),
+                                    'uId': user.uid.toString(),
                                   }).then((value) {
                                     Utils().toastMessage('Bids added');
                                     setState(() {
@@ -285,7 +279,7 @@ class _CreateBidsState extends State<CreateBids> {
                                   Utils().toastMessage(e.toString());
                                 }
 
-                                controller.userLoading();
+                                // controller.userLoading();
                                 Get.to(BottomNavigationBarScreen());
                               }
                             }),
