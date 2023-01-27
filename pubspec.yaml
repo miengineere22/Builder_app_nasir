@@ -46,6 +46,7 @@ dependencies:
   url_launcher: ^6.1.7
   provider: ^6.0.5
   share: ^0.6.3+2
+  favorite_button: ^0.0.4
   
 
 dev_dependencies:

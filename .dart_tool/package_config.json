@@ -242,6 +242,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "favorite_button",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/favorite_button-0.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "ffi",
       "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/ffi-2.0.1",
       "packageUri": "lib/",
@@ -1004,7 +1010,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2023-01-21T05:47:26.359032Z",
+  "generated": "2023-01-23T04:23:14.546099Z",
   "generator": "pub",
   "generatorVersion": "2.18.5"
 }

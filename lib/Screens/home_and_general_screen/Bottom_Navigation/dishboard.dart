@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:favorite_button/favorite_button.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -66,8 +67,9 @@ class _DashboardState extends State<Dashboard> {
                     crossAxisCount: 2),
                 itemCount: snapshot.data!.docs.length,
                 itemBuilder: (context, index) {
-                  return Stack(children: [
-                    Column(
+                  // var _isFavorited;
+                  return Card(
+                    child: Column(
                       children: [
                         InkWell(
                           onTap: () {
@@ -109,20 +111,37 @@ class _DashboardState extends State<Dashboard> {
                                 ),
                                 Row(
                                   children: [
-                                    Text(
-                                      snapshot.data!.docs[index]["pPrice"],
-                                      style: TextStyle(
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.bold),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 8.0),
+                                      child: Text(
+                                        snapshot.data!.docs[index]["pPrice"],
+                                        style: TextStyle(
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.bold),
+                                      ),
                                     ),
                                     const Spacer(),
-                                    IconButton(
-                                      icon: Icon(Icons.favorite_outline),
-                                      onPressed: () async {
-                                        favoriteData(
-                                            snapshot.data!.docs[index]);
-                                      },
-                                    )
+                                    // IconButton(
+                                    //   icon: Icon(Icons.favorite_outline),
+                                    //   onPressed: () async {
+                                    //     favoriteData(
+                                    //         snapshot.data!.docs[index]);
+                                    //   },
+                                    // )
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.only(right: 8.0),
+                                      child: FavoriteButton(
+                                        iconSize: 30,
+                                        isFavorite: false,
+                                        valueChanged: (_isFavorite) async {
+                                          print('Is Favorite : $_isFavorite');
+                                          favoriteData(
+                                              snapshot.data!.docs[index]);
+                                        },
+                                      ),
+                                    ),
+                                    //make a container
                                   ],
                                 ),
                                 Text(
@@ -140,7 +159,7 @@ class _DashboardState extends State<Dashboard> {
                         )
                       ],
                     ),
-                  ]);
+                  );
                 },
               );
             }
