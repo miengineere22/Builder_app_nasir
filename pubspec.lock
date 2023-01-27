@@ -887,13 +887,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.27.7"
-  share:
+  share_plus:
     dependency: "direct main"
     description:
-      name: share
+      name: share_plus
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.6.4+5"
+    version: "6.3.0"
+  share_plus_platform_interface:
+    dependency: transitive
+    description:
+      name: share_plus_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.2.0"
   shelf:
     dependency: transitive
     description:

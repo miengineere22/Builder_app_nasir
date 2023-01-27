@@ -84,22 +84,26 @@ class _DetailScreenState extends State<DetailScreen> {
                               ),
                             ),
                           ),
-                          Row(
-                            children: [
-                              Text(
-                                widget.price.toString(),
-                                style: TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.bold),
-                              ),
-                              const Spacer(),
-                              //  IconButton(
-                              //           icon: Icon(Icons.favorite_outline),
-                              //           onPressed: () async {
-                              //             favoriteData(
-                              //                 snapshot.data!.docs[index]);
-                              //           },
-                              //         )
-                            ],
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: Row(
+                              children: [
+                                Text(
+                                  widget.price.toString(),
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                const Spacer(),
+                                //  IconButton(
+                                //           icon: Icon(Icons.favorite_outline),
+                                //           onPressed: () async {
+                                //             favoriteData(
+                                //                 snapshot.data!.docs[index]);
+                                //           },
+                                //         )
+                              ],
+                            ),
                           ),
                           SizedBox(
                             height: 8,
@@ -119,134 +123,145 @@ class _DetailScreenState extends State<DetailScreen> {
                 borderOnForeground: true,
                 child: Container(
                   width: MediaQuery.of(context).size.width,
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Description:',
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          widget.description.toString(),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                CircleAvatar(
-                                  backgroundColor: Colors.deepPurple,
-                                  child: Icon(
-                                    Icons.account_box,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 20,
-                                ),
-                                Text(
-                                  widget.name.toString(),
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              children: [
-                                CircleAvatar(
-                                  backgroundColor: Colors.deepPurple,
-                                  child: Icon(
-                                    Icons.mail_outline_rounded,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                TextButton(
-                                    child: Text(
-                                      widget.email.toString(),
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Description:',
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            widget.description.toString(),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  CircleAvatar(
+                                    backgroundColor: Colors.deepPurple,
+                                    child: Icon(
+                                      Icons.account_box,
+                                      color: Colors.white,
                                     ),
-                                    onPressed: () async {
-                                      var currentUserEmail =
-                                          widget.email.toString();
-                                      //
-                                      String usermail =
-                                          "mailto:$currentUserEmail";
-                                      // ignore: deprecated_member_use
-                                      if (await canLaunch(usermail)) {
+                                  ),
+                                  SizedBox(
+                                    width: 30,
+                                  ),
+                                  Text(
+                                    widget.name.toString(),
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Row(
+                                children: [
+                                  CircleAvatar(
+                                    backgroundColor: Colors.deepPurple,
+                                    child: Icon(
+                                      Icons.mail_outline_rounded,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  TextButton(
+                                      child: Text(
+                                        widget.email.toString(),
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      onPressed: () async {
+                                        var currentUserEmail =
+                                            widget.email.toString();
+                                        //
+                                        String usermail =
+                                            "mailto:$currentUserEmail";
                                         // ignore: deprecated_member_use
-                                        await launch(usermail);
-                                      } else {
-                                        throw "Error occured trying to mail that account.";
-                                      }
-                                    }),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              children: [
-                                CircleAvatar(
-                                  backgroundColor: Colors.deepPurple,
-                                  child: Icon(
-                                    Icons.whatsapp,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                TextButton(
-                                    child: Text(
-                                      widget.phone.toString(),
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
+                                        if (await canLaunch(usermail)) {
+                                          // ignore: deprecated_member_use
+                                          await launch(usermail);
+                                        } else {
+                                          throw "Error occured trying to mail that account.";
+                                        }
+                                      }),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Row(
+                                children: [
+                                  CircleAvatar(
+                                    backgroundColor: Colors.deepPurple,
+                                    child: Icon(
+                                      Icons.whatsapp,
+                                      color: Colors.white,
                                     ),
-                                    onPressed: () async {
-                                      var telephoneNumber =
-                                          widget.phone.toString();
+                                  ),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  TextButton(
+                                      child: Text(
+                                        widget.phone.toString(),
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      onPressed: () async {
+                                        var telephoneNumber =
+                                            widget.phone.toString();
 
-                                      String telephoneUrl =
-                                          "https://wa.me/$telephoneNumber";
-                                      // ignore: deprecated_member_use
-                                      if (await canLaunch(telephoneUrl)) {
+                                        String telephoneUrl =
+                                            "https://wa.me/$telephoneNumber";
                                         // ignore: deprecated_member_use
-                                        await launch(telephoneUrl);
-                                      } else {
-                                        throw "Error occured trying to call that number.";
-                                      }
-                                    }),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              children: [
-                                CircleAvatar(
-                                  backgroundColor: Colors.deepPurple,
-                                  child: Icon(
-                                    Icons.location_on,
-                                    color: Colors.white,
+                                        if (await canLaunch(telephoneUrl)) {
+                                          // ignore: deprecated_member_use
+                                          await launch(telephoneUrl);
+                                        } else {
+                                          throw "Error occured trying to call that number.";
+                                        }
+                                      }),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Row(
+                                children: [
+                                  CircleAvatar(
+                                    backgroundColor: Colors.deepPurple,
+                                    child: Icon(
+                                      Icons.location_on,
+                                      color: Colors.white,
+                                    ),
                                   ),
-                                ),
-                                SizedBox(
-                                  width: 20,
-                                ),
-                                Text(
-                                  widget.location.toString(),
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ]),
+                                  SizedBox(
+                                    width: 30,
+                                  ),
+                                  Text(
+                                    widget.location.toString(),
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ]),
+                  ),
                 ),
               ),
             ],

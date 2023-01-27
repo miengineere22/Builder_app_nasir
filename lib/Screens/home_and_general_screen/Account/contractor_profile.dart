@@ -133,7 +133,7 @@ class _ProfileAccountState extends State<ProfileAccount> {
                 Divider(),
                 ListTile(
                   title: Text(
-                    'phone',
+                    'Phone',
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 20,
@@ -142,6 +142,23 @@ class _ProfileAccountState extends State<ProfileAccount> {
                   ),
                   subtitle: Text(
                     map["_uPhone"] ?? "",
+                    style: TextStyle(
+                      fontSize: 18,
+                    ),
+                  ),
+                ),
+                Divider(),
+                ListTile(
+                  title: Text(
+                    'Address',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  subtitle: Text(
+                    map["_uHome"] ?? "",
                     style: TextStyle(
                       fontSize: 18,
                     ),

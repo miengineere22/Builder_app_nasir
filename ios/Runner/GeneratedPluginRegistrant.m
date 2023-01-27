@@ -66,10 +66,10 @@
 @import path_provider_ios;
 #endif
 
-#if __has_include(<share/FLTSharePlugin.h>)
-#import <share/FLTSharePlugin.h>
+#if __has_include(<share_plus/FLTSharePlusPlugin.h>)
+#import <share_plus/FLTSharePlusPlugin.h>
 #else
-@import share;
+@import share_plus;
 #endif
 
 #if __has_include(<sqflite/SqflitePlugin.h>)
@@ -97,7 +97,7 @@
   [FluttertoastPlugin registerWithRegistrar:[registry registrarForPlugin:@"FluttertoastPlugin"]];
   [FLTImagePickerPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTImagePickerPlugin"]];
   [FLTPathProviderPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTPathProviderPlugin"]];
-  [FLTSharePlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTSharePlugin"]];
+  [FLTSharePlusPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTSharePlusPlugin"]];
   [SqflitePlugin registerWithRegistrar:[registry registrarForPlugin:@"SqflitePlugin"]];
   [FLTURLLauncherPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTURLLauncherPlugin"]];
 }

@@ -41,6 +41,12 @@
     <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
     <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
 
+    <permission
+        android:name="com.example.buildapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.example.buildapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+
     <application
         android:name="android.app.Application"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -134,6 +140,30 @@
             android:name="io.flutter.plugins.urllauncher.WebViewActivity"
             android:exported="false"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+        <!--
+           Declares a provider which allows us to store files to share in
+           '.../caches/share_plus' and grant the receiving action access
+        -->
+        <provider
+            android:name="dev.fluttercommunity.plus.share.ShareFileProvider"
+            android:authorities="com.example.buildapp.flutter.share_provider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/flutter_share_file_paths" />
+        </provider>
+        <!--
+           This manifest declared broadcast receiver allows us to use an explicit
+           Intent when creating a PendingItent to be informed of the user's choice
+        -->
+        <receiver
+            android:name="dev.fluttercommunity.plus.share.SharePlusPendingIntent"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="EXTRA_CHOSEN_COMPONENT" />
+            </intent-filter>
+        </receiver>
 
         <uses-library
             android:name="androidx.window.extensions"

@@ -5,8 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-// // ignore: import_of_legacy_library_into_null_safe
-// import 'package:share/share.dart';
+import 'package:share_plus/share_plus.dart';
 
 class Account extends StatefulWidget {
   @override
@@ -54,8 +53,7 @@ class _AccountState extends State<Account> {
                     leading: Icon(Icons.share),
                     title: Text(' Share With friends '),
                     onTap: () {
-                      // Get.to(shareApp());
-                      // Share.share('com.example.buildapp');
+                      Share.share('com.example.buildapp');
                     },
                   ),
                   ListTile(

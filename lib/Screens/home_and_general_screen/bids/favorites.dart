@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:buildapp/Screens/home_and_general_screen/Bottom_Navigation/detial_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:favorite_button/favorite_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,6 +13,19 @@ class Favorites extends StatefulWidget {
 }
 
 class _FavoritesState extends State<Favorites> {
+  final databasedelete = FirebaseFirestore.instance.collection("Favorite");
+  final database = FirebaseFirestore.instance.collection("Favorite");
+
+  deleteBid(String? docId) async {
+    print(docId.toString());
+    try {
+      // var Favorite;
+      await database.doc(docId).delete();
+    } catch (e) {
+      log("error in delete data");
+    }
+  }
+
   final auth = FirebaseAuth.instance.currentUser;
   @override
   Widget build(BuildContext context) {
@@ -74,11 +90,26 @@ class _FavoritesState extends State<Favorites> {
                               ),
                               Row(
                                 children: [
-                                  Text(
-                                    snapshot.data!.docs[index]["price"],
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 8.0),
+                                    child: Text(
+                                      snapshot.data!.docs[index]["price"],
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  Spacer(),
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 8.0),
+                                    child: FavoriteButton(
+                                        iconSize: 30,
+                                        isFavorite: true,
+                                        valueChanged: (_isFavorite) async {
+                                          print('Is Favorite : $_isFavorite');
+                                          deleteBid(
+                                              snapshot.data!.docs[index].id);
+                                        }),
                                   ),
                                   // const Spacer(),
                                   // IconButton(
@@ -90,15 +121,18 @@ class _FavoritesState extends State<Favorites> {
                                   // )
                                 ],
                               ),
-                              Row(
-                                children: [
-                                  Text(
-                                    snapshot.data!.docs[index]["title"],
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ],
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8.0),
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      snapshot.data!.docs[index]["title"],
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
                               ),
                               SizedBox(
                                 height: 15,
